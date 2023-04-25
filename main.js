@@ -11,11 +11,48 @@ const jobTypes = {
 
 // Your code will go here
 
+class CrewMember {
+  constructor(crewName, crewJob, crewSpecialSkill) {
+    this.name = crewName,
+    this.job = crewJob,
+    this.specialSkill = crewSpecialSkill,
+    this.ship = null
+  }
+
+  enterShip(_ship) {
+    this.ship = _ship,
+    _ship.crew.push(this)
+  }
+}
+
+class  Ship {
+  constructor(shipName, shipType, shipAbility) {
+    this.name = shipName,
+    this.type = shipType,
+    this.ability = shipAbility
+  }
+  crew = []
+
+missionStatement() {
+  if(this.crew.length > 0) {
+    return this.ability;
+  } else {
+    return "Can't perform a mission yet.";
+  }
+}
+
+}
 
 
 
+const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+ 
 
-
+let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+  
+console.log(crewMember1.ship)
+crewMember1.enterShip(mav);
+console.log(crewMember1.ship)
 
 // Begin by reading the tests and building a function that will full each one.
 // As you build, you might not have to build them in order, maybe you do...
